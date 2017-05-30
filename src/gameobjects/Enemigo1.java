@@ -8,8 +8,14 @@ import java.io.IOException;
  */
 public class Enemigo1 extends Personaje{
     
+    private static final String DIRECCION_IMAGEN = "XXX";
+    private static final int X_POSICION = 35;
+    private static final int Y_POSICION = 35;
+    private static final int VELOCIDAD = 2;
+    private static final int VIDAS = 3;
+    
     public Enemigo1(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
-        super(direccionImagen, 35, 35, 2, 3);
+        super(DIRECCION_IMAGEN, X_POSICION, Y_POSICION, VELOCIDAD, VIDAS);
     }
     
 }
