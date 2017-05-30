@@ -2,7 +2,6 @@ package gameobjects;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import static java.lang.Thread.sleep;
 import javax.imageio.ImageIO;
 import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
@@ -10,7 +9,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * Personajes
  * @author SabotenSama
  */
-public class Personaje implements Runnable{
+public class Personaje {
     private static final int STOP=-1;
     private static final int UP=0;
     private static final int DOWN=1;
@@ -79,28 +78,4 @@ public class Personaje implements Runnable{
         direccion=STOP;
     }
 
-    @Override
-    public void run() {
-        while (true){
-            switch(direccion){
-                case UP:
-                    yPosicion--;
-                    break;
-                case DOWN:
-                    yPosicion++;
-                    break;
-                case RIGHT:
-                    xPosicion++;
-                    break;
-                case LEFT:
-                    xPosicion--;
-                    break;
-            }
-            try {
-                sleep(10);
-            } catch (InterruptedException ex) {
-                //Irrelevante, no hacemos nada
-            }
-        }
-    }
 }
