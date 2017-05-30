@@ -4,13 +4,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import javax.imageio.ImageIO;
-import net.juanxxiii.j23gameengine.GameEngine;
 import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
 /**
- * Nave espacial
- * Prueba
- * @author Paniagua
+ * Personajes
+ * @author SabotenSama
  */
 public class Personaje implements Runnable{
     private static final int STOP=-1;
@@ -21,51 +19,49 @@ public class Personaje implements Runnable{
     
     private int direccion=STOP;
     
-    private BufferedImage nave;//Nave espacial
-    private int xNave = 0;//Posición x de la nave
-    private int yNave = 0;//Posición y de la nave
-    private int speedNave = 3;//Velocidad de la nave
+    private BufferedImage sprite;//Imagen del personaje
+    private int xPosicion;//Posición x del personaje
+    private int yPosicion;//Posición y del personaje
+    private int velocidad;//Velocidad del personaje
+    private int vidas;//Vidas del personaje
     
-    public Personaje(String direccionImagen) throws IOException{
-        //Cargamos la imagen
-        nave = ImageIO.read(JPGameScreen.class.getResourceAsStream(direccionImagen));
-        //Inicializamos posiciones
-        xNave = (GameEngine.screenWidth-nave.getWidth())/2;
-        yNave = GameEngine.screenHeight-nave.getHeight()*2;
+    /**
+     * Constructor del personaje
+     * 
+     * @param direccionImagen Dirección en la que está el sprite del personaje
+     * @param xPosicion Posición x del personaje
+     * @param yPosicion Posición y del personaje
+     * @param velocidad Velocidad del personaje
+     * @param vidas Vidas del personaje
+     */
+    public Personaje(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
+        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream(direccionImagen));
+        this.xPosicion = xPosicion;
+        this.yPosicion = yPosicion;
+        this.velocidad = velocidad;
+        this.vidas = vidas;
     }
 
-    public BufferedImage getNave() {
-        return nave;
+    public BufferedImage getSprite() {
+        return sprite;
     }
 
-    public void setNave(BufferedImage nave) {
-        this.nave = nave;
+    public int getxPosicion() {
+        return xPosicion;
     }
 
-    public int getxNave() {
-        return xNave;
+    public int getyPosicion() {
+        return yPosicion;
     }
 
-    public void setxNave(int xNave) {
-        this.xNave = xNave;
+    public int getVelocidad() {
+        return velocidad;
     }
 
-    public int getyNave() {
-        return yNave;
+    public int getVidas() {
+        return vidas;
     }
 
-    public void setyNave(int yNave) {
-        this.yNave = yNave;
-    }
-
-    public int getSpeedNave() {
-        return speedNave;
-    }
-
-    public void setSpeedNave(int speedNave) {
-        this.speedNave = speedNave;
-    }
-    
     public void moveUp(){
         direccion=UP;
     }
@@ -88,16 +84,16 @@ public class Personaje implements Runnable{
         while (true){
             switch(direccion){
                 case UP:
-                    yNave--;
+                    yPosicion--;
                     break;
                 case DOWN:
-                    yNave++;
+                    yPosicion++;
                     break;
                 case RIGHT:
-                    xNave++;
+                    xPosicion++;
                     break;
                 case LEFT:
-                    xNave--;
+                    xPosicion--;
                     break;
             }
             try {
