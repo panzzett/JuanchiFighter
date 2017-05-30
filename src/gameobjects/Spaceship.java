@@ -9,6 +9,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
 /**
  * Nave espacial
+ * Prueba
  * @author Paniagua
  */
 public class Spaceship implements Runnable{
