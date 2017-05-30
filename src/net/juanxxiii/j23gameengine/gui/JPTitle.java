@@ -58,7 +58,7 @@ public class JPTitle extends javax.swing.JPanel {
             GameEngine topFrame = (GameEngine)SwingUtilities.getWindowAncestor(JPTitle.this);
             topFrame.comenzarJuego(); 
             //Sonido de comienzo
-            SoundPlayer sonido = new SoundPlayer(getClass().getResource("/assets/intro.wav"));
+            SoundPlayer sonido = new SoundPlayer(getClass().getResource("/assets/BandaSonora.wav"));
             sonido.start(false);
         }
     }
