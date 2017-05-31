@@ -17,5 +17,10 @@ public class Enemigo1 extends Personaje{
     public Enemigo1(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
         super(DIRECCION_IMAGEN, X_POSICION, Y_POSICION, VELOCIDAD, VIDAS);
     }
+
+    @Override
+    public void recibirImpacto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
