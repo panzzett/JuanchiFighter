@@ -6,7 +6,8 @@
 package net.juanxxiii.j23gameengine.gui;
 
 import gameobjects.Enemigo1;
-import gameobjects.Personaje;
+import gameobjects.Enemigo2;
+import gameobjects.Enemigo3;
 import gameobjects.Spaceship;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -27,81 +28,87 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     BufferedImage bg;//Imagen de fondo
     Spaceship nave;
     Enemigo1 enemigo1;
+    Enemigo2 enemigo2;
+    Enemigo3 enemigo3;
 
     /**
      * Creates new form JPGameScreen
      */
     public JPGameScreen() {
-        initComponents();
-        //Cargamos los recursos
-        loadResources();
-        //Hacemos que el panel sea 'focusable' para aceptar eventos
-        this.setFocusable(true);
-        //Creamos los listener
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                //El keyboard no dispara este evento
-                switch (e.getKeyCode()){
-                    case 38:
-                        //Key up
-                        break;
-                    case 40:
-                        //Key down
-                        break;
-                    case 39:
-                        //Key right
-                        break;
-                    case 37:
-                        //Key left
-                        break;
+        try {
+            initComponents();
+            //Cargamos los recursos
+            loadResources();
+            //Hacemos que el panel sea 'focusable' para aceptar eventos
+            this.setFocusable(true);
+            //Creamos los listener
+            this.addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    //El keyboard no dispara este evento
+                    switch (e.getKeyCode()){
+                        case 38:
+                            //Key up
+                            break;
+                        case 40:
+                            //Key down
+                            break;
+                        case 39:
+                            //Key right
+                            break;
+                        case 37:
+                            //Key left
+                            break;
+                    }
                 }
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()){
-                    case 38:
-                        //Key up
-                        nave.moveUp();
-                        break;
-                    case 40:
-                        //Key down
-                        nave.moveDown();
-                        break;
-                    case 39:
-                        //Key right
-                        nave.moveRight();
-                        break;
-                    case 37:
-                        //Key left
-                        nave.moveLeft();
-                        break;
+                
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    switch (e.getKeyCode()){
+                        case 38:
+                            //Key up
+                            nave.moveUp();
+                            break;
+                        case 40:
+                            //Key down
+                            nave.moveDown();
+                            break;
+                        case 39:
+                            //Key right
+                            nave.moveRight();
+                            break;
+                        case 37:
+                            //Key left
+                            nave.moveLeft();
+                            break;
+                    }
                 }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()){
-                    case 38:
-                        //Key up
-                        nave.stop();
-                        break;
-                    case 40:
-                        //Key down
-                        nave.stop();
-                        break;
-                    case 39:
-                        //Key right
-                        nave.stop();
-                        break;
-                    case 37:
-                        //Key left
-                        nave.stop();
-                        break;
+                
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    switch (e.getKeyCode()){
+                        case 38:
+                            //Key up
+                            nave.stop();
+                            break;
+                        case 40:
+                            //Key down
+                            nave.stop();
+                            break;
+                        case 39:
+                            //Key right
+                            nave.stop();
+                            break;
+                        case 37:
+                            //Key left
+                            nave.stop();
+                            break;
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();    
+        }
     }
 
     @Override
@@ -115,7 +122,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
         //Pinta los malos
-        
+        enemigo1.dibujar(g2d);
     }
 
     /**
@@ -161,8 +168,10 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     /**
      * Carga los recursos del videojuego
      */
-    private void loadResources(){
-        enemigo 1 = new Enemigo1();
+    private void loadResources() throws IOException{
+        enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35, 2, 3);
+        enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100, 2, 3);
+        enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300, 2, 3);
         try {
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();

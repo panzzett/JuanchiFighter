@@ -1,5 +1,6 @@
 package gameobjects;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -18,11 +19,11 @@ public abstract class Personaje {
     
     private int direccion=STOP;
     
-    private BufferedImage sprite;//Imagen del personaje
-    private int xPosicion;//Posición x del personaje
-    private int yPosicion;//Posición y del personaje
-    private int velocidad;//Velocidad del personaje
-    private int vidas;//Vidas del personaje
+    protected BufferedImage sprite;//Imagen del personaje
+    protected int xPosicion;//Posición x del personaje
+    protected int yPosicion;//Posición y del personaje
+    protected int velocidad;//Velocidad del personaje
+    protected int vidas;//Vidas del personaje
     
     /**
      * Constructor del personaje
@@ -34,7 +35,7 @@ public abstract class Personaje {
      * @param vidas Vidas del personaje
      */
     public Personaje(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
-        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream(direccionImagen));
+        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/" + direccionImagen));
         this.xPosicion = xPosicion;
         this.yPosicion = yPosicion;
         this.velocidad = velocidad;
@@ -79,7 +80,7 @@ public abstract class Personaje {
     }
     
     public void dibujar(Graphics2D g2d){
-        g2d.DrawImage(sprite, xPosicion, yPosicion, velocidad, vidas);
+        g2d.drawImage(sprite, xPosicion, yPosicion, velocidad, vidas);
     }
     
     public abstract void recibirImpacto();
