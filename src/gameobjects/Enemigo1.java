@@ -20,7 +20,8 @@ public class Enemigo1 extends Personaje{
 
     @Override
     public void recibirImpacto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.salud--;
+        
     }
     
 }

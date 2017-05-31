@@ -5,6 +5,8 @@
  */
 package net.juanxxiii.j23gameengine.gui;
 
+import gameobjects.Enemigo1;
+import gameobjects.Personaje;
 import gameobjects.Spaceship;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -15,7 +17,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import javax.imageio.ImageIO;
-import net.juanxxiii.j23gameengine.util.SoundPlayer;
 
 /**
  *
@@ -25,6 +26,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     BufferedImage bg;//Imagen de fondo
     Spaceship nave;
+    Enemigo1 enemigo1;
 
     /**
      * Creates new form JPGameScreen
@@ -112,6 +114,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         g2d.drawImage(bg, 0, 0, null);
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
+        //Pinta los malos
+        
     }
 
     /**
@@ -158,6 +162,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
      * Carga los recursos del videojuego
      */
     private void loadResources(){
+        enemigo 1 = new Enemigo1();
         try {
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();

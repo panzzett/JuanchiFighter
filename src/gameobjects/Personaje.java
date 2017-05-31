@@ -77,6 +77,11 @@ public abstract class Personaje {
     public void stop(){
         direccion=STOP;
     }
+    
+    public void dibujar(Graphics2D g2d){
+        g2d.DrawImage(sprite, xPosicion, yPosicion, velocidad, vidas);
+    }
+    
     public abstract void recibirImpacto();
     
 }
