@@ -9,7 +9,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * Personajes
  * @author SabotenSama
  */
-public class Personaje {
+public abstract class Personaje {
     private static final int STOP=-1;
     private static final int UP=0;
     private static final int DOWN=1;
@@ -77,5 +77,6 @@ public class Personaje {
     public void stop(){
         direccion=STOP;
     }
-
+    public abstract void recibirImpacto();
+    
 }
