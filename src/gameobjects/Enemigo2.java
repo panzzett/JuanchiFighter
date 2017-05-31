@@ -23,11 +23,6 @@ public class Enemigo2 extends Personaje{
         super(direccionImagen, xPosicion, yPosicion, velocidad, vidas);
     }
 
-    @Override
-    public void recibirImpacto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
     
 }
