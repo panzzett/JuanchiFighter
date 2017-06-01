@@ -31,8 +31,6 @@ public abstract class Personaje implements Runnable{
      * @param direccionImagen Dirección en la que está el sprite del personaje
      * @param xPosicion Posición x del personaje
      * @param yPosicion Posición y del personaje
-     * @param velocidad Velocidad del personaje
-     * @param vidas Vidas del personaje
      */
     public Personaje(String direccionImagen, int xPosicion, int yPosicion) throws IOException {
         this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/" + direccionImagen));
