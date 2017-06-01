@@ -4,6 +4,7 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
 /**
  * Primer enemigo
@@ -12,13 +13,13 @@ import java.util.logging.Logger;
  */
 public class Enemigo3 extends Personaje {
 
-    public Enemigo3(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
-        super(direccionImagen, xPosicion, yPosicion, velocidad, vidas);
+    public Enemigo3(String direccionImagen, int xPosicion, int yPosicion) throws IOException {
+        super(direccionImagen, xPosicion, yPosicion);
     }
 
     @Override
     public void recibirImpacto() {
-        this.vidas--;
+
     }
 
     @Override

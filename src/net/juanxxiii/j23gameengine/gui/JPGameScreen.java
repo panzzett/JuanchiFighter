@@ -176,9 +176,9 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
      */
     private void loadResources() throws IOException {
         try {
-            enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35, 2, 3);
-            enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100, 2, 3);
-            enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300, 2, 3);
+            enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35);
+            enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100);
+            enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300);
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();
             new Thread(enemigo1).start();

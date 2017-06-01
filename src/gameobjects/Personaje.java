@@ -22,8 +22,8 @@ public abstract class Personaje implements Runnable{
     protected BufferedImage sprite;//Imagen del personaje
     protected int xPosicion;//Posición x del personaje
     protected int yPosicion;//Posición y del personaje
-    protected int velocidad;//Velocidad del personaje
-    protected int vidas;//Vidas del personaje
+    protected int width;
+    protected int height;
     
     /**
      * Constructor del personaje
@@ -34,12 +34,12 @@ public abstract class Personaje implements Runnable{
      * @param velocidad Velocidad del personaje
      * @param vidas Vidas del personaje
      */
-    public Personaje(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
+    public Personaje(String direccionImagen, int xPosicion, int yPosicion) throws IOException {
         this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/" + direccionImagen));
         this.xPosicion = xPosicion;
         this.yPosicion = yPosicion;
-        this.velocidad = velocidad;
-        this.vidas = vidas;
+        this.width = JPGameScreen.getRectangulo().width;
+        this.height = JPGameScreen.getRectangulo().height;
     }
 
     public BufferedImage getSprite() {
@@ -52,14 +52,6 @@ public abstract class Personaje implements Runnable{
 
     public int getyPosicion() {
         return yPosicion;
-    }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
-
-    public int getVidas() {
-        return vidas;
     }
 
     public void moveUp(){

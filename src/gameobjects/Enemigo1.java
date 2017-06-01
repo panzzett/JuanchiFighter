@@ -12,13 +12,13 @@ import java.util.logging.Logger;
  */
 public class Enemigo1 extends Personaje {
 
-    public Enemigo1(String direccionImagen, int xPosicion, int yPosicion, int velocidad, int vidas) throws IOException {
-        super(direccionImagen, xPosicion, yPosicion, velocidad, vidas);
+    public Enemigo1(String direccionImagen, int xPosicion, int yPosicion) throws IOException {
+        super(direccionImagen, xPosicion, yPosicion);
     }
 
     @Override
     public void recibirImpacto() {
-        this.vidas--;
+
     }
 
     @Override
