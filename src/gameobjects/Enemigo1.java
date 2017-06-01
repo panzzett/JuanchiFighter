@@ -29,7 +29,7 @@ public class Enemigo1 extends Personaje {
                 sleep(16);
                 if (estado == 1) {
                     xPosicion = xPosicion + 3;
-                    if (xPosicion > 200) {
+                    if (xPosicion > width-25) {
                         estado = 2;
                     }
                 } else if (estado == 2) {
