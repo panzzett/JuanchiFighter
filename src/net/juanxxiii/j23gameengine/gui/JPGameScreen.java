@@ -12,6 +12,7 @@ import gameobjects.Spaceship;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -25,17 +26,20 @@ import javax.imageio.ImageIO;
  */
 public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
-    BufferedImage bg;//Imagen de fondo
-    Spaceship nave;
-    Enemigo1 enemigo1;
-    Enemigo2 enemigo2;
-    Enemigo3 enemigo3;
-
+    private BufferedImage bg;//Imagen de fondo
+    private Spaceship nave;
+    private Enemigo1 enemigo1;
+    private Enemigo2 enemigo2;
+    private Enemigo3 enemigo3;
+    private static Rectangle bounds;
+    
     /**
      * Creates new form JPGameScreen
      */
     public JPGameScreen() {
         try {
+            
+            JPGameScreen.bounds = this.getBounds();
             initComponents();
             //Cargamos los recursos
             loadResources();
@@ -185,7 +189,9 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             ex.printStackTrace();
         }
     }
-
+    public static Rectangle getRectangulo(){
+        return JPGameScreen.bounds;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
