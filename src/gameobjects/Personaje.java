@@ -80,7 +80,7 @@ public abstract class Personaje {
     }
     
     public void dibujar(Graphics2D g2d){
-        g2d.drawImage(sprite, xPosicion, yPosicion, velocidad, vidas);
+        g2d.drawImage(sprite, xPosicion, yPosicion, null);
     }
     
     public abstract void recibirImpacto();
