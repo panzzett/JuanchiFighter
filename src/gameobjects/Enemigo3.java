@@ -30,19 +30,18 @@ public class Enemigo3 extends Personaje {
     public void run() {
         while (true) {
             try {
-                if (state == 0) {
-                    //->
+                if (state == 0) {//->
                     this.xPosicion -= vel;
                     if (this.xPosicion < 0) {
                         state = 1;
-                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloNoe/MaloNoeDer.png"));
+                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloNoe/Der1.png"));
                     }
 
                 } else if (state == 1) {//<-
                     this.xPosicion += vel;
                     if (this.xPosicion > width - 25) {
                         state = 0;
-                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloNoe/MaloNoeIzI.png"));
+                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloNoe/Izq1.png"));
                     }
                 }
             } catch (IOException ex) {
