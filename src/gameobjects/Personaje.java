@@ -10,7 +10,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * Personajes
  * @author SabotenSama
  */
-public abstract class Personaje {
+public abstract class Personaje implements Runnable{
     private static final int STOP=-1;
     private static final int UP=0;
     private static final int DOWN=1;
@@ -84,5 +84,8 @@ public abstract class Personaje {
     }
     
     public abstract void recibirImpacto();
+
+    @Override
+    public abstract void run();
     
 }

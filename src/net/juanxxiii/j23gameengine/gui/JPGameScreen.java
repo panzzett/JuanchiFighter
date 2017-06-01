@@ -46,7 +46,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
                 @Override
                 public void keyTyped(KeyEvent e) {
                     //El keyboard no dispara este evento
-                    switch (e.getKeyCode()){
+                    switch (e.getKeyCode()) {
                         case 38:
                             //Key up
                             break;
@@ -61,10 +61,10 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
                             break;
                     }
                 }
-                
+
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    switch (e.getKeyCode()){
+                    switch (e.getKeyCode()) {
                         case 38:
                             //Key up
                             nave.moveUp();
@@ -83,10 +83,10 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
                             break;
                     }
                 }
-                
+
                 @Override
                 public void keyReleased(KeyEvent e) {
-                    switch (e.getKeyCode()){
+                    switch (e.getKeyCode()) {
                         case 38:
                             //Key up
                             nave.stop();
@@ -107,7 +107,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
                 }
             });
         } catch (Exception ex) {
-            ex.printStackTrace();    
+            ex.printStackTrace();
         }
     }
 
@@ -151,7 +151,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     @Override
     public void run() {
         //Asigna el foco si es necesario
-        if (requestFocusInWindow()==false) {
+        if (requestFocusInWindow() == false) {
             setFocusable(true);
         }
         //GAME LOOP - REPINTA A 60FPS
@@ -164,17 +164,20 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             }
         }
     }
-    
+
     /**
      * Carga los recursos del videojuego
      */
-    private void loadResources() throws IOException{
-        enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35, 2, 3);
-        enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100, 2, 3);
-        enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300, 2, 3);
+    private void loadResources() throws IOException {
         try {
+            enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35, 2, 3);
+            enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100, 2, 3);
+            enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300, 2, 3);
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();
+            new Thread(enemigo1).start();
+            new Thread(enemigo2).start();
+            new Thread(enemigo3).start();
             new Thread(nave).start();
         } catch (IOException ex) {
             ex.printStackTrace();

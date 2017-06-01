@@ -16,5 +16,10 @@ public class Enemigo3 extends Personaje{
     public void recibirImpacto() {
         this.vidas--;
     }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
