@@ -4,6 +4,8 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import net.juanxxiii.j23gameengine.gui.JPGameScreen;
 
 /**
  * Primer enemigo
@@ -30,16 +32,18 @@ public class Enemigo1 extends Personaje {
                 if (estado == 1) {
                     xPosicion = xPosicion + 3;
                     if (xPosicion > width-25) {
+                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloJavi/MaloJaviIzLado.png"));                        
                         estado = 2;
                     }
                 } else if (estado == 2) {
                     xPosicion = xPosicion - 3;
                     if (xPosicion < 0) {
+                        this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/MaloJavi/MaloJaviDerE.png"));
                         estado = 1;
                     }
                 }
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Enemigo1.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
