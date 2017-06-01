@@ -124,6 +124,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         g2d.fillRect(0, 0, this.getBounds().width, this.getBounds().height);
         //Pinta el fondo
         g2d.drawImage(bg, 0, 0, null);
+        Personaje.setHeight(this.getBounds().height);
+        Personaje.setWidth(this.getBounds().width);
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
         //Pinta los malos
@@ -177,8 +179,6 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
      */
     private void loadResources() throws IOException {
         try {
-            Personaje.setHeight(this.getBounds().height);
-            Personaje.setWidth(this.getBounds().width);
             //JPGameScreen.bounds = this.getBounds();
             enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35);
             enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100);
