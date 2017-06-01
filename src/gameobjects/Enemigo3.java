@@ -13,6 +13,8 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  */
 public class Enemigo3 extends Personaje {
 
+    private int state = 0;
+
     public Enemigo3(String direccionImagen, int xPosicion, int yPosicion) throws IOException {
         super(direccionImagen, xPosicion, yPosicion);
     }
@@ -25,7 +27,13 @@ public class Enemigo3 extends Personaje {
     @Override
     public void run() {
         while (true) {
-            this.xPosicion++;
+            if (state == 0) {
+                this.xPosicion++;
+            } else {
+                this.xPosicion--;
+            }
+            state = (this.xPosicion > Personaje.width) ? 1 : 0;
+
             try {
                 sleep(16);
             } catch (InterruptedException ex) {

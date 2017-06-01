@@ -8,6 +8,7 @@ package net.juanxxiii.j23gameengine.gui;
 import gameobjects.Enemigo1;
 import gameobjects.Enemigo2;
 import gameobjects.Enemigo3;
+import gameobjects.Personaje;
 import gameobjects.Spaceship;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -32,15 +33,15 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     private Enemigo2 enemigo2;
     private Enemigo3 enemigo3;
     private static Rectangle bounds;
-    
+
     /**
      * Creates new form JPGameScreen
      */
     public JPGameScreen() {
         try {
-            
-            JPGameScreen.bounds = this.getBounds();
+
             initComponents();
+
             //Cargamos los recursos
             loadResources();
             //Hacemos que el panel sea 'focusable' para aceptar eventos
@@ -176,6 +177,9 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
      */
     private void loadResources() throws IOException {
         try {
+            Personaje.setHeight(this.getBounds().height);
+            Personaje.setWidth(this.getBounds().width);
+            //JPGameScreen.bounds = this.getBounds();
             enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35);
             enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100);
             enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300);
@@ -189,9 +193,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
             ex.printStackTrace();
         }
     }
-    public static Rectangle getRectangulo(){
-        return JPGameScreen.bounds;
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

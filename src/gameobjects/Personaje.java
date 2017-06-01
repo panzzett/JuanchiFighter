@@ -22,8 +22,8 @@ public abstract class Personaje implements Runnable{
     protected BufferedImage sprite;//Imagen del personaje
     protected int xPosicion;//Posición x del personaje
     protected int yPosicion;//Posición y del personaje
-    protected int width;
-    protected int height;
+    protected static int width;
+    protected static int height;
     
     /**
      * Constructor del personaje
@@ -36,8 +36,14 @@ public abstract class Personaje implements Runnable{
         this.sprite = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/" + direccionImagen));
         this.xPosicion = xPosicion;
         this.yPosicion = yPosicion;
-        this.width = JPGameScreen.getRectangulo().width;
-        this.height = JPGameScreen.getRectangulo().height;
+    }
+
+    public static void setWidth(int width) {
+        Personaje.width = width;
+    }
+
+    public static void setHeight(int height) {
+        Personaje.height = height;
     }
 
     public BufferedImage getSprite() {
