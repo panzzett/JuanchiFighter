@@ -29,7 +29,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     private BufferedImage bg;//Imagen de fondo
     private Spaceship nave;
-    private Enemigo1 enemigo1;
+    public Enemigo1 enemigo1;
     private Enemigo2 enemigo2;
     private Enemigo3 enemigo3;
     private static Rectangle bounds;
