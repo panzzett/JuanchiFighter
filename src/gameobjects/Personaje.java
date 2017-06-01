@@ -17,6 +17,7 @@ public abstract class Personaje implements Runnable{
     private static final int RIGHT=2;
     private static final int LEFT=3;
     /*modificación*/
+    /*OTRA MODIFICACION*/
     
     private int direccion=STOP;
     
