@@ -6,6 +6,9 @@
 package gameobjects;
 
 import java.io.IOException;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +27,27 @@ public class Enemigo2 extends Personaje{
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int estado=1;
+        while(true){
+            try {
+                sleep(25);
+                if(estado==1){
+                    xPosicion = xPosicion + 3;
+                    if (xPosicion > 200) {
+                        estado = 2;
+                    }
+                }else if(estado==2){
+                    xPosicion = xPosicion - 3;
+                    if (xPosicion < 0) {
+                        estado = 1;
+                    }
+                }
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Enemigo2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
+    
     
 }
