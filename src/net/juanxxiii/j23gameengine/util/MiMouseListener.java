@@ -6,6 +6,9 @@
 package net.juanxxiii.j23gameengine.util;
 
 import gameobjects.Enemigo1;
+import gameobjects.Enemigo2;
+import gameobjects.Enemigo3;
+import gameobjects.PersonajeI;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,17 +22,22 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * @author dam
  */
 public class MiMouseListener implements MouseListener {
-
-    public static Graphics2D g2d;
-
+    private static int contador = 0;
     @Override
     public void mouseClicked(MouseEvent e) {
+        PersonajeI enemigo;
         try {
-            Enemigo1 e1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", e.getX(), e.getY());
-            JPGameScreen.vectorEnemy.add(e1);
-
-            new Thread(e1).start();
-            e1.dibujar(g2d);
+            if (contador==0) {
+                enemigo = new Enemigo1("MaloJavi/MaloJaviDerE.png", e.getX(), e.getY());
+            }else if(contador==1){
+                enemigo = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", e.getX(), e.getY());
+            }else{
+                enemigo = new Enemigo3("MaloNoe/Der1.png", e.getX(), e.getY());
+                contador=-1;
+            }
+            JPGameScreen.vectorEnemy.add(enemigo);
+            contador++;
+            new Thread((Runnable) enemigo).start();
 
         } catch (IOException ex) {
             Logger.getLogger(MiMouseListener.class.getName()).log(Level.SEVERE, null, ex);

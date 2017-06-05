@@ -10,6 +10,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * Personajes
  * @author SabotenSama
  */
+//implementamos la interfaz
 public abstract class Personaje implements Runnable, PersonajeI{
     private static final int STOP=-1;
     private static final int UP=0;

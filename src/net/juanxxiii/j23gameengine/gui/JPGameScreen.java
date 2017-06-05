@@ -5,9 +5,7 @@
  */
 package net.juanxxiii.j23gameengine.gui;
 
-import gameobjects.Enemigo1;
-import gameobjects.Enemigo2;
-import gameobjects.Enemigo3;
+
 import gameobjects.Personaje;
 import gameobjects.PersonajeI;
 import gameobjects.Spaceship;
@@ -29,13 +27,12 @@ import net.juanxxiii.j23gameengine.util.MiMouseListener;
  * @author Profesor
  */
 public class JPGameScreen extends javax.swing.JPanel implements Runnable {
-    private Graphics2D g2d;
+    
     private BufferedImage bg;//Imagen de fondo
     private Spaceship nave;
-    public Enemigo1 enemigo1;
-    private Enemigo2 enemigo2;
-    private Enemigo3 enemigo3;
+    
     private static Rectangle bounds;
+    //delcaramos el vector de tipo interfaz
     public static Vector<PersonajeI> vectorEnemy = new Vector();
 
     /**
@@ -124,7 +121,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     @Override
     public void paintComponent(Graphics g) {
-        g2d = (Graphics2D) g;
+        
+        Graphics2D g2d = (Graphics2D) g;
         g2d.setPaint(Color.WHITE);
         //Pinta la pantalla de blanco
         g2d.fillRect(0, 0, this.getBounds().width, this.getBounds().height);
@@ -132,14 +130,15 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         g2d.drawImage(bg, 0, 0, null);
         Personaje.setHeight(this.getBounds().height);
         Personaje.setWidth(this.getBounds().width);
-        MiMouseListener.g2d = this.g2d;
+    
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
-        //Pinta los malos
+        
+        //Pinta los malos guardados en el vector
         for (PersonajeI enemigo : vectorEnemy) {
             enemigo.dibujar(g2d);
         }
-       // vectorEnemy.forEach(enemigo -> enemigo.dibujar(g2d));
+       
     }
 
     /**
