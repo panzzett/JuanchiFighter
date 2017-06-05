@@ -10,7 +10,7 @@ import net.juanxxiii.j23gameengine.gui.JPGameScreen;
  * Personajes
  * @author SabotenSama
  */
-public abstract class Personaje implements Runnable{
+public abstract class Personaje implements Runnable, PersonajeI{
     private static final int STOP=-1;
     private static final int UP=0;
     private static final int DOWN=1;
@@ -75,13 +75,18 @@ public abstract class Personaje implements Runnable{
         direccion=STOP;
     }
     
-    public void dibujar(Graphics2D g2d){
-        g2d.drawImage(sprite, xPosicion, yPosicion, null);
-    }
+//    public void dibujar(Graphics2D g2d){
+//        g2d.drawImage(sprite, xPosicion, yPosicion, null);
+//    }
     
     public abstract void recibirImpacto();
 
     @Override
     public abstract void run();
+
+    @Override
+    public void dibujar(Graphics2D g2d) {
+        g2d.drawImage(sprite, xPosicion, yPosicion, null);
+    }
     
 }

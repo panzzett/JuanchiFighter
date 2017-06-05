@@ -9,6 +9,7 @@ import gameobjects.Enemigo1;
 import gameobjects.Enemigo2;
 import gameobjects.Enemigo3;
 import gameobjects.Personaje;
+import gameobjects.PersonajeI;
 import gameobjects.Spaceship;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,20 +20,23 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
+import java.util.Vector;
 import javax.imageio.ImageIO;
+import net.juanxxiii.j23gameengine.util.MiMouseListener;
 
 /**
  *
  * @author Profesor
  */
 public class JPGameScreen extends javax.swing.JPanel implements Runnable {
-
+    private Graphics2D g2d;
     private BufferedImage bg;//Imagen de fondo
     private Spaceship nave;
     public Enemigo1 enemigo1;
     private Enemigo2 enemigo2;
     private Enemigo3 enemigo3;
     private static Rectangle bounds;
+    public static Vector<PersonajeI> vectorEnemy = new Vector();
 
     /**
      * Creates new form JPGameScreen
@@ -44,6 +48,8 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
             //Cargamos los recursos
             loadResources();
+            /*añadir listener de la clase MiMouseListener*/
+            this.addMouseListener(new MiMouseListener());
             //Hacemos que el panel sea 'focusable' para aceptar eventos
             this.setFocusable(true);
             //Creamos los listener
@@ -118,7 +124,7 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
 
     @Override
     public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+        g2d = (Graphics2D) g;
         g2d.setPaint(Color.WHITE);
         //Pinta la pantalla de blanco
         g2d.fillRect(0, 0, this.getBounds().width, this.getBounds().height);
@@ -126,12 +132,14 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
         g2d.drawImage(bg, 0, 0, null);
         Personaje.setHeight(this.getBounds().height);
         Personaje.setWidth(this.getBounds().width);
+        MiMouseListener.g2d = this.g2d;
         //Pinta los elementos
         g2d.drawImage(nave.getNave(), nave.getxNave(), nave.getyNave(), null);
         //Pinta los malos
-        enemigo1.dibujar(g2d);
-        enemigo2.dibujar(g2d);
-        enemigo3.dibujar(g2d);
+        for (PersonajeI enemigo : vectorEnemy) {
+            enemigo.dibujar(g2d);
+        }
+       // vectorEnemy.forEach(enemigo -> enemigo.dibujar(g2d));
     }
 
     /**
@@ -180,15 +188,11 @@ public class JPGameScreen extends javax.swing.JPanel implements Runnable {
     private void loadResources() throws IOException {
         try {
             //JPGameScreen.bounds = this.getBounds();
-            enemigo1 = new Enemigo1("MaloJavi/MaloJaviDerE.png", 35, 35);
-            enemigo2 = new Enemigo2("MaloCarlos/MaloCarlosDerE.png", 100, 100);
-            enemigo3 = new Enemigo3("MaloNoe/MaloNoeDer.png", 300, 300);
+
             bg = ImageIO.read(JPGameScreen.class.getResourceAsStream("/assets/bg.jpg"));
             nave = new Spaceship();
-            new Thread(enemigo1).start();
-            new Thread(enemigo2).start();
-            new Thread(enemigo3).start();
             new Thread(nave).start();
+            
         } catch (IOException ex) {
             ex.printStackTrace();
         }
